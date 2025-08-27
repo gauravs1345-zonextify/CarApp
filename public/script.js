@@ -25,39 +25,33 @@ document.addEventListener('DOMContentLoaded', () => {
     pageData.forEach(car => {
       const card = document.createElement('div');
       card.className = 'car-card';
-      card.innerHTML = `
-    
-              <div class="car-card">
-                <div class="car-image">
-                    <img src="${car["mainImage"]}" alt="Skoda Enyaq 80 iV Sportline 5d">
-                </div>
-                 <h3 class="car-name">${car["Listing title"]}</h3>
-                <div class="car-details-grid">
-                   
-
-                    <div class="detail-item"><span>Make:</span> ${car["Make"]}</div>
-                    <div class="detail-item"><span>Model:</span> ${car["Model"]}</div>
-                    <div class="detail-item"><span>Year:</span> ${car["Model year"]}</div>
-                    <div class="detail-item"><span>Mileage:</span> ${car["Mileage (km)"]}</div>
-        
-                    <div class="detail-item"><span>Drive Type:</span> ${car["Drivetype"]}</div>
-                    <div class="detail-item"><span>Exterior color:</span> ${car["Exterior color"]}</div>
-                    <div class="detail-item"><span>Seller:</span> ${car["Seller type"]}</div>
-                    <div class="detail-item"><span>Horsepower:</span> ${car["Horsepower"]}</div>
-                    <div class="detail-item"><span>Price:</span> €${car["Main price"]}</div>
-                    <div class="detail-item"><span>Monthly Cost:</span> €5006/month</div>
-                    <div class="detail-item"><span>Savings:</span> -10,000 kr.</div>
-                </div>
-
-                <div class="car-features">
-                    <strong>Key Features:</strong> Sportline, Matrix LED, Varmepumpe, 77kWh Battery
-                </div>
-
-                <a href="#" class="details-link">View Listing</a>
+       card.innerHTML = `
+            <div class="car-image">
+            <img src="${car["mainImage"] || 'fallback.jpg'}" alt="${car["Listing title"] || 'Car Image'}">
             </div>
 
-     
-      `;
+            <h3 class="car-name">${car["Listing title"] || 'Unknown Title'}</h3>
+
+            <div class="car-details-grid">
+            <div class="detail-item"><span>Make:</span> ${car["Make"] || 'N/A'}</div>
+            <div class="detail-item"><span>Model:</span> ${car["Model"] || 'N/A'}</div>
+            <div class="detail-item"><span>Year:</span> ${car["Model year"] || 'N/A'}</div>
+            <div class="detail-item"><span>Mileage:</span> ${car["Mileage (km)"] || 'N/A'} km</div>
+            <div class="detail-item"><span>Drive Type:</span> ${car["Drivetype"] || 'N/A'}</div>
+            <div class="detail-item"><span>Exterior Color:</span> ${car["Exterior color"] || 'N/A'}</div>
+            <div class="detail-item"><span>Seller:</span> ${car["Seller type"] || 'N/A'}</div>
+            <div class="detail-item"><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
+            <div class="detail-item"><span>Price:</span> €${car["Main price"] || 'N/A'}</div>
+            <div class="detail-item"><span>Monthly Cost:</span> €5006/month</div>
+            <div class="detail-item"><span>Savings:</span> -10,000 kr.</div>
+            </div>
+
+            <div class="car-features">
+            <strong>Key Features:</strong> ${Array.isArray(car["Options list"]) ? car["Options list"].join(', ') : 'N/A'}
+            </div>
+
+            <a href="${car["Source URL"] || '#'}" class="details-link" target="_blank">View Listing</a>
+        `;
       container.appendChild(card);
     });
   }
