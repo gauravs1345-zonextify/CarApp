@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Leads Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+   <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header-title">Car Leads</h1>
+            <p class="header-subtitle">Active leads from various sources</p>
+            <div class="header-actions">
+                <button class="button import-button">Import</button>
+                <button class="button add-lead-button">+ Add Lead</button>
+            </div>
+        </header>
+
+        <section class="filters">
+            <div class="filter-group">
+                <label for="any-type">Make</label>
+                <select id="any-type">
+                    <option>Type</option>
+                    <option>Volvo</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="any-model">Model</label>
+                <select id="any-model">
+                    <option>Any</option>
+                    <option>Twingo</option>
+                    <option>XC40</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="min-price">Min Price</label>
+                <input type="text" id="min-price" placeholder="Any">
+            </div>
+            <div class="filter-group">
+                <label for="max-price">Max Price</label>
+                <input type="text" id="max-price" placeholder="Any">
+            </div>
+            <div class="filter-group">
+                <label for="min-mileage">Min Mileage</label>
+                <input type="text" id="min-mileage" placeholder="Any">
+            </div>
+            <div class="filter-group">
+                <button class="more-filters-button">More Filters</button>
+            </div>
+            <button class="button apply-button">Apply</button>
+        </section>
+        <main id="car-list" class="car-leads-list"></main>
+        <div id="pagination" class="pagination-controls"></div>
+
+        <!-- <main class="car-leads-list">
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/156405/xuv-3xo-exterior-right-front-three-quarter.jpeg?isig=0&q=80" alt="Skoda Enyaq">
+                </div>
+                <div class="car-details">
+                    <h3 class="car-name">Skoda Enyaq 80 IV Sportline 5d</h3>
+                    <p class="car-info">2023</p>
+                    <p class="car-price-old">375.000 kr.</p>
+                    <p class="car-price-new">359.000 kr. <span class="price-change">+16.000 kr.</span></p>
+                    <p class="car-info">03/2023, Steel Metallic</p>
+                    <p class="car-features">Key Features: MW M</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://www.team-bhp.com/sites/default/files/styles/amp_high_res/public/nexon-diesel-3.JPG" alt="VW ID.5">
+                </div>
+                <div class="car-details">
+                    <h3 class="car-name">VW ID.5 77 GTX 4Motion 5d</h3>
+                    <p class="car-info">2024</p>
+                    <p class="car-price-old">445.000 kr.</p>
+                    <p class="car-price-new">429.900 kr. <span class="price-change">+15.100 kr.</span></p>
+                    <p class="car-info">9.500 km</p>
+                    <p class="car-features">Marg, Sevm</p>
+                </div>
+            </div>
+        </main> -->
+    </div>
+   
+</body>
+</html>
