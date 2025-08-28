@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "env": {
-    "MONGO_URI": "mongodb+srv://autohunter:Kim7340@autohunter.mchm6yb.mongodb.net/unified?retryWrites=true&w=majority&appName=autohunter"
-  }
+  "builds": [
+    { "src": "./server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/server.js" }
+  ]
 }
-
-    
-
