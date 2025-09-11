@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearSelect = document.getElementById('any-year');
   const applyButton = document.getElementById('apply-filters');
 
+  if (!container || !pagination || !makeSelect || !modelSelect || !yearSelect || !applyButton) {
+    console.error('Missing one or more required DOM elements.');
+    return;
+  }
+
   const recordsPerPage = 20;
   let currentPage = 1;
   let carData = [];
@@ -57,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateYearOptions() {
+    if (!yearSelect) return;
+
     const selectedMake = makeSelect.value;
     const selectedModel = modelSelect.value;
     const years = new Set();
@@ -124,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="detail-item"><span>Mileage:</span> ${car["Mileage (km)"] || 'N/A'} km</div>
           <div class="detail-item"><span>Drive Type:</span> ${car["Drivetype"] || 'N/A'}</div>
           <div class="detail-item"><span>Exterior Color:</span> ${car["Exterior color"] || 'N/A'}</div>
+          <div class="detail-item"><span>Interior Color:</span> ${car["Interior color"] || 'N/A'}</div>
           <div class="detail-item"><span>Seller:</span> ${car["Seller type"] || 'N/A'}</div>
           <div class="detail-item"><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
           <div class="detail-item"><span>Price:</span> €${car["Main price"] || 'N/A'}</div>
