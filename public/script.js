@@ -6,11 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearSelect = document.getElementById('any-year');
   const applyButton = document.getElementById('apply-filters');
 
-  if (!container || !pagination || !makeSelect || !modelSelect || !yearSelect || !applyButton) {
-    console.error('Missing one or more required DOM elements.');
-    return;
-  }
-
   const recordsPerPage = 20;
   let currentPage = 1;
   let carData = [];
@@ -62,8 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateYearOptions() {
-    if (!yearSelect) return;
-
     const selectedMake = makeSelect.value;
     const selectedModel = modelSelect.value;
     const years = new Set();
@@ -120,26 +113,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'car-card';
       card.innerHTML = `
+       
         <div class="car-image">
-          <img src="${car["mainImage"] || 'fallback.jpg'}" alt="${car["Listing title"] || 'Car Image'}">
-        </div>
-        <h3 class="car-name">${car["Listing title"] || 'Unknown Title'}</h3>
+             <img src="${car["mainImage"] || 'fallback.jpg'}" alt="${car["Listing title"] || 'Car Image'}">
+          </div>
         <div class="car-details-grid">
+         <h3 class="car-name">${car["Listing title"] || 'Unknown Title'}</h3>
+            
           <div class="detail-item"><span>Make:</span> ${car["Make"] || 'N/A'}</div>
           <div class="detail-item"><span>Model:</span> ${car["Model"] || 'N/A'}</div>
           <div class="detail-item"><span>Year:</span> ${car["Model year"] || 'N/A'}</div>
           <div class="detail-item"><span>Mileage:</span> ${car["Mileage (km)"] || 'N/A'} km</div>
           <div class="detail-item"><span>Drive Type:</span> ${car["Drivetype"] || 'N/A'}</div>
           <div class="detail-item"><span>Exterior Color:</span> ${car["Exterior color"] || 'N/A'}</div>
-          <div class="detail-item"><span>Interior Color:</span> ${car["Interior color"] || 'N/A'}</div>
           <div class="detail-item"><span>Seller:</span> ${car["Seller type"] || 'N/A'}</div>
           <div class="detail-item"><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
           <div class="detail-item"><span>Price:</span> €${car["Main price"] || 'N/A'}</div>
         </div>
-        <div class="car-features">
-          <strong>Key Features:</strong> ${Array.isArray(car["Options list"]) ? car["Options list"].join(', ') : 'N/A'}
-        </div>
-        <a href="${car["Source URL"] || '#'}" class="details-link" target="_blank">View Listing</a>
+       
       `;
       container.appendChild(card);
     });
