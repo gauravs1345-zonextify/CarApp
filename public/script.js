@@ -118,17 +118,17 @@ document.addEventListener('DOMContentLoaded', () => {
              <img src="${car["mainImage"] || 'fallback.jpg'}" alt="${car["Listing title"] || 'Car Image'}">
           </div>
         <div class="car-details-grid">
-         <h3 class="car-name">${car["Listing title"] || 'Unknown Title'}</h3>
-            
-          <div class="detail-item"><span>Make:</span> ${car["Make"] || 'N/A'}</div>
-          <div class="detail-item"><span>Model:</span> ${car["Model"] || 'N/A'}</div>
-          <div class="detail-item"><span>Year:</span> ${car["Model year"] || 'N/A'}</div>
-          <div class="detail-item"><span>Mileage:</span> ${car["Mileage (km)"] || 'N/A'} km</div>
-          <div class="detail-item"><span>Drive Type:</span> ${car["Drivetype"] || 'N/A'}</div>
-          <div class="detail-item"><span>Exterior Color:</span> ${car["Exterior color"] || 'N/A'}</div>
-          <div class="detail-item"><span>Seller:</span> ${car["Seller type"] || 'N/A'}</div>
-          <div class="detail-item"><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
-          <div class="detail-item"><span>Price:</span> €${car["Main price"] || 'N/A'}</div>
+            <h3 class="car-name">${car["Listing title"] || 'Unknown Title'}</h3>
+            <h4 class="car-price">€${car["Main price"] || 'N/A'} <span style="color: #999; font-size: 0.9rem;">(16% Off)</span></h4>
+           <div class="detail-item"><i class="fas fa-car"></i><span>Make:</span> ${car["Make"] || 'N/A'}</div>
+          <div class="detail-item"><i class="fas fa-cogs"></i><span>Transmission:</span> ${car["Model"] || 'N/A'}</div>
+          <div class="detail-item"><i class="fas fa-calendar-alt"></i><span>Year:</span> ${car["Model year"] || 'N/A'}</div>
+          <div class="detail-item"><i class="fas fa-road"></i><span>Mileage:</span> ${car["Mileage (km)"] || 'N/A'} km</div>
+          <div class="detail-item"><i class="fas fa-gas-pump"></i><span>Drive Type:</span> ${car["Drivetype"] || 'N/A'}</div>
+          <div class="detail-item"><i class="fas fa-palette"></i><span>Exterior Color:</span> ${car["Exterior color"] || 'N/A'}</div>
+          <div class="detail-item"><i class="fas fa-user-tag"></i><span>Seller:</span> ${car["Seller type"] || 'N/A'}</div>
+          <div class="detail-item"><i class="fas fa-horse-head"></i><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
+          <div class="detail-item"><i class="fas fa-star"></i><span>Rating:</span> 4.7 (688 reviews)</div>
         </div>
        
       `;
