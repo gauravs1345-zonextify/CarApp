@@ -1,4 +1,4 @@
-        body {
+      body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f4f7f6;
@@ -112,32 +112,29 @@
 }
 
 /* Car Leads List */
-.car-card {
+
+/* Car Listing Container */
+.car-listing-container {
   display: flex;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin: 20px auto;
-  max-width: 900px;
-  padding: 1.5rem;
-  font-family: 'Segoe UI', sans-serif;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
+/* Car Card Layout */
 .car-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1rem;
   background: #fff;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  max-width: 900px;
   padding: 1.5rem;
-  font-family: 'Segoe UI', sans-serif;
-  gap: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Image section: 20% width */
+/* Car Image */
 .car-image {
-  flex: 0 0 20%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,36 +147,58 @@
   object-fit: cover;
 }
 
-/* Details section: 80% width */
+/* Car Details Grid */
 .car-details-grid {
-  flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
 }
 
+/* Car Title & Price */
 .car-name {
-  grid-column: span 3;
   font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: #333;
+  margin-bottom: 0.5rem;
+  color: #222;
+  grid-column: span 2;
 }
 
+.car-price {
+  font-size: 1.2rem;
+  color: #2c7;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  grid-column: span 2;
+}
+
+/* Detail Items */
 .detail-item {
-  /* background: #f7f7f7;
-  padding: 0.75rem; */
   display: flex;
-  border-radius: 6px;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.95rem;
   color: #333;
 }
 
-.detail-item span {
-  display: block;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 4px;
+.detail-item i {
+  color: #888;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
 }
 
 /* Pagination Code  */
@@ -213,9 +232,6 @@
   font-weight: bold;
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
 }
-
-
-
 
 
 .button {
@@ -291,7 +307,3 @@
   font-weight: bold;
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
 }
- 
-
-
-
