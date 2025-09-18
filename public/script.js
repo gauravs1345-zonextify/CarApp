@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function renderPage(page, data) {
+    
     container.innerHTML = '';
     const start = (page - 1) * recordsPerPage;
     const end = start + recordsPerPage;
@@ -130,6 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="detail-item"><i class="fas fa-horse-head"></i><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
           <div class="detail-item"><i class="fas fa-star"></i><span>Rating:</span> 4.7 (688 reviews)</div>
         </div>
+        
+        <a href="details.html?id=${car["_id"]}" class="car-link">
+          View Details
+        </a>
        
       `;
       container.appendChild(card);
