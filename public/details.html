@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audi e-tron S - Car Listing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet"/>
+  <style>
+    body { background:#f9fafc; font-family: 'Segoe UI', sans-serif; }
+    .hero { 
+      background: linear-gradient(120deg, #2c3e50, #3498db); 
+      color:#fff; padding:40px 20px; border-radius:15px; 
+      text-align:center; margin-bottom:30px; 
+    }
+    .hero h1 { font-size:2.5rem; font-weight:700; }
+    .hero .price { font-size:2rem; color:#ffd32a; font-weight:bold; }
+    .carousel-item img { height:460px; object-fit:cover; border-radius:15px; }
+    .thumbs img { height:90px; object-fit:cover; cursor:pointer; border-radius:8px; transition:.3s; }
+    .thumbs img:hover { transform:scale(1.05); box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+    .details-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .details-grid .card { padding:12px; border:none; background:#fff; border-radius:12px; box-shadow:0 3px 8px rgba(0,0,0,0.08); }
+    .details-grid .card strong { color:#2c3e50; }
+    .option-list { list-style:none; padding:0; margin:0; }
+    .option-list li { padding:6px 0; border-bottom:1px solid #eee; }
+    .option-list li::before { content:"✔ "; color:#27ae60; font-weight:bold; }
+    .show-more { color:#3498db; cursor:pointer; font-weight:600; }
+    .description-box { background:#fff; padding:20px; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.05); }
+    .seller-card { background:linear-gradient(135deg,#2980b9,#6dd5fa); color:#fff; border-radius:12px; padding:20px; }
+    .seller-card a { color:#ffeaa7; text-decoration:none; }
+    .zoom-btn {
+      position:absolute; bottom:10px; right:10px;
+      background:rgba(0,0,0,0.6); color:#fff; border:none;
+      border-radius:50%; width:40px; height:40px;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:.3s;
+    }
+    .zoom-btn:hover { background:#3498db; }
+    .carousel-inner { position:relative; }
+  </style>
+</head>
+<body class="p-4">
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 id="listingTitle"></h1>
+    <p class="price" id="price"></p>
+    <button class="btn btn-warning btn-lg mt-2">📞 Contact Dealer</button>
+  </div>
+
+  <div class="row g-4">
+    <!-- LEFT SIDE -->
+    <div class="col-lg-8">
+      <!-- IMAGE CAROUSEL -->
+      <div id="carCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+        <div class="carousel-inner" id="carouselImages"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+      <!-- Thumbnails -->
+      <div class="d-flex gap-2 thumbs" id="thumbs"></div>
+
+      <!-- DETAILS -->
+      <h4 class="mb-3 mt-4">Car Details</h4>
+      <div class="details-grid" id="details"></div>
+
+      <!-- OPTIONS -->
+      <!-- <h4 class="mt-4">Equipment & Options</h4>
+      <ul class="option-list" id="options"></ul>
+      <p class="show-more" onclick="toggleOptions()">Show More ▼</p> -->
+
+    <h4 class="mt-4">Equipment & Options</h4>
+<ul class="option-list" id="options"></ul>
+<p class="show-more">Show More ▼</p>
+
+
+
+      <!-- DESCRIPTION -->
+      <h4 class="mt-4">Description</h4>
+      <div class="description-box" id="description"></div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="col-lg-4">
+      <div class="seller-card">
+        <h4>Seller Info</h4>
+        <p><b>Dealer:</b> <span id="dealer"></span></p>
+        <p><b>Phone:</b> <span id="phone"></span></p>
+        <p><b>Email:</b> <a href="#" id="email"></a></p>
+        <p><b>Website:</b> <a href="#" id="website" target="_blank">Visit Dealer</a></p>
+        <p><b>Location:</b> <span id="location"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="carDetails.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>
 
