@@ -59,47 +59,55 @@ document.addEventListener('DOMContentLoaded', () => {
       carousel.innerHTML = carouselHTML;
       thumbs.innerHTML = thumbsHTML;
 
-      // 🖱️ Thumbnail click binding
-      document.querySelectorAll(".thumb").forEach((thumb, i) => {
-        thumb.addEventListener("click", () => {
-          document.querySelectorAll('.carousel-item').forEach(item => item.classList.remove('active'));
-          document.querySelectorAll('.carousel-item')[i].classList.add('active');
-          $('#carCarousel').carousel(i);
-        });
-      });
+      // 🏷️ Specifications & Options
 
-      // 📋 Details Grid
-      const details = [
-        ["Make", data["Make"]], ["Model", data["Model"]], ["Trim", data["Variant/Trim"]],
-        ["First Reg.", data["First registration date"]], ["Year", data["Model year"]],
-        ["Mileage", (data["Mileage (km)"] || 0).toLocaleString() + " km"],
-        ["Exterior", data["Exterior color"]], ["Interior", data["Interior color"]],
-        ["Power", data["Horsepower"] + " hp"], ["Battery", data["Battery net capacity (kWh)"] + " kWh"],
-        ["Range", data["Range WLTP (km)"] + " km"], ["Drivetype", data["Drivetype"]]
-      ];
+       const badgeColors = ["bg-primary", "bg-success",  "bg-info", "bg-danger", "bg-secondary" ,"bg-warning",];
 
-      const detailsDiv = document.getElementById("details");
-      detailsDiv.innerHTML = details.map(d =>
-        `<div class="card"><strong>${d[0]}:</strong> ${d[1] || "N/A"}</div>`
-      ).join("");
 
-      // 🛠️ Options List
-      const optionsDiv = document.getElementById("options");
-      data["Options list"].forEach((opt, i) => {
-        const li = document.createElement("li");
-        li.textContent = opt;
-        if (i >= 8) li.style.display = "none";
-        optionsDiv.appendChild(li);
-      });
+       let html = `
+    
+          <hr class="my-4">
 
-      // 📝 Description
-      document.getElementById("description").textContent = data["description"] || "No description available.";
+          <!-- Specifications -->
+          <h4 style="font-style: italic;font-family: ui-rounded;font-weight: 700;color: rgb(44 45 46);text-decoration: underline;">Specifications</h4>
+          <table class="table table-bordered table-striped spec-table">
+            <tbody>
+            
+              <tr><td>Make</td><td>${data["Make"]}</td></tr>
+              <tr><td>Model Year</td><td>${data["Model year"]}</td></tr>
+              <tr><td>Model</td><td>${data["Model"]}</td></tr>
+              <tr><td>Trim</td><td>${data["Variant/Trim"]}</td></tr>
+              <tr><td>Mileage</td><td>$${data["Mileage (km)"]} km</td></tr>
+              <tr><td>Horsepower</td><td>${data["Horsepower"]} hp</td></tr>
+              <tr><td>Drive</td><td>${data["Drive"]}</td></tr>
+              <tr><td>Exterior color</td><td>${data["Exterior color"]}</td></tr>
+              <tr><td>Battery Gross</td><td>${data["Battery Gross"]} kWh</td></tr>
+              <tr><td>Battery Net</td><td>${data["Battery Net"]} kWh</td></tr>
+              <tr><td>Range (WLTP)</td><td>${data["Range (WLTP)"]} km</td></tr>
+            </tbody>
+          </table>
 
-      // 🔘 Bind toggleOptions to button
-      document.querySelector(".show-more").addEventListener("click", toggleOptions);
+          <!-- Options -->
+          <h4 style="font-style: italic;font-family: ui-rounded;font-weight: 700;color: rgb(44 45 46);text-decoration: underline;">Options & Features</h4>
+          <div class="mb-3" style="display: flex !important; flex-wrap: wrap !important; gap: 5px;">
+            ${Array.isArray(data["Options list"]) ? data["Options list"].map(opt => {
+              const color = badgeColors[Math.floor(Math.random() * badgeColors.length)];
+              return `<span class="badge ${color} option-badge">${opt}</span>`;
+            }).join("") : ""}
+
+
+          </div>
+        
+        `;
+
+        document.getElementById("carContainer").innerHTML = html;
+
+
+
     })
     .catch(err => {
       console.error("Error fetching car:", err);
     });
 });
+
 
