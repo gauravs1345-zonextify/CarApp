@@ -114,27 +114,61 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'car-card';
       card.innerHTML = `
-       
-        <div class="car-image">
-             <img src="${car["mainImage"] || 'fallback.jpg'}" alt="${car["Listing title"] || 'Car Image'}">
-          </div>
-        <div class="car-details-grid">
-            <h3 class="car-name">${car["Listing title"] || 'Unknown Title'}</h3>
-            <h4 class="car-price">€${car["Main price"] || 'N/A'} <span style="color: #999; font-size: 0.9rem;">(16% Off)</span></h4>
-           <div class="detail-item"><i class="fas fa-car"></i><span>Make:</span> ${car["Make"] || 'N/A'}</div>
-          <div class="detail-item"><i class="fas fa-cogs"></i><span>Transmission:</span> ${car["Model"] || 'N/A'}</div>
-          <div class="detail-item"><i class="fas fa-calendar-alt"></i><span>Year:</span> ${car["Model year"] || 'N/A'}</div>
-          <div class="detail-item"><i class="fas fa-road"></i><span>Mileage:</span> ${car["Mileage (km)"] || 'N/A'} km</div>
-          <div class="detail-item"><i class="fas fa-gas-pump"></i><span>Drive Type:</span> ${car["Drivetype"] || 'N/A'}</div>
-          <div class="detail-item"><i class="fas fa-palette"></i><span>Exterior Color:</span> ${car["Exterior color"] || 'N/A'}</div>
-          <div class="detail-item"><i class="fas fa-user-tag"></i><span>Seller:</span> ${car["Seller type"] || 'N/A'}</div>
-          <div class="detail-item"><i class="fas fa-horse-head"></i><span>Horsepower:</span> ${car["Horsepower"] || 'N/A'} HP</div>
-          <div class="detail-item"><i class="fas fa-star"></i><span>Rating:</span> 4.7 (688 reviews)</div>
+     <div class="row car-card" onclick="window.location.href='details.html?id=${car['_id']}'">
+
+      <div class="col-md-4">
+        <img src="${car["mainImage"] || 'fallback.jpg'}" alt="${car["Listing title"] || 'Car Image'}">
+      </div>
+
+      <div class="col-md-8 car-card-main" >
+        <div class="car-overlay d-flex flex-column justify-content-between ">
+          <div class="car-card-main2" style="padding:0">
+            <h5>${car["Model year"]} ${car["Make"]} ${car["Model"]}</h5>
+            <p class="mb-2"><em>${car["Variant/Trim"]}</em></p>
+
+            <div class="row">
+                  <div class="col-sm-6 detail-row">
+                    <i class="bi bi-speedometer2"></i> <span>${car["Mileage (km)"].toLocaleString()} KM</span>
+                  </div>
+                  <div class="col-sm-6 detail-row">
+                    <i class="bi bi-gear"></i> <span>Automatic</span>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-sm-6 detail-row">
+                    <i class="bi bi-palette"></i> <span>${car["Exterior color"]}</span>
+                  </div>
+                  <div class="col-sm-6 detail-row">
+                    <i class="bi bi-lightning-charge"></i> <span>${car["Horsepower"]} HP</span>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-sm-6 detail-row">
+                    <i class="bi bi-geo-alt"></i> <span>${car["Seller address"]}</span>
+                  </div>
+                  <div class="col-sm-6 detail-row">
+                    <i class="bi bi-building"></i> <span>${car["Company/Dealer name"]}</span>
+                  </div>
+            </div>
+
+
+            <p class="desc">Experience the perfect blend of performance and comfort with this ${car["Model year"]} ${car["Make"]} ${car["Model"]} ${car["Variant/Trim"]}, finished in sleek {Color}. With just {Mileage} km on the clock, it offers rear-wheel drive and an impressive ${car["Horsepower"]} HP.</p>
+                          </div>
+                          <div class="d-flex justify-content-between align-items-center mt-2">
+                  <p class="price mb-0" style="font-weight: bold; font-size: 1.2rem; color: #fa7f72;">${car.Currency} ${car["Main price"]}</p>
+                  <a href="tel:${car["Phone"]}" 
+                    class="btn btn-primary btn-phone" 
+                    style="background-color:#007bff; border:none; padding:6px 12px; border-radius:6px; font-weight:500;">
+                    <i class="bi bi-telephone-fill"></i> ${car["Phone"]}
+                  </a>
+                </div>
+
+           </div>
         </div>
-        
-        <a href="details.html?id=${car["_id"]}" class="car-link">
-          View Details
-        </a>
+    </div>
+
        
       `;
       container.appendChild(card);
